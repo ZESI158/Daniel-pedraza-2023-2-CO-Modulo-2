@@ -1,12 +1,12 @@
 import pygame
 
-from dino_runner.utils.constants import FONT_STYLE, SCREEN_HEIGHT, SCREEN_WIDTH
+from dino_runner.utils.constants import FONT_STYLE, SCREEN_HEIGHT, SCREEN_WIDTH, GAME_OVER
 
 
 class Menu:
   HALF_SCREEN_HEIGHT = SCREEN_HEIGHT // 2
   HALF_SCREEN_WIDTH = SCREEN_WIDTH // 2
-  
+
   def __init__(self, message, screen):
     screen.fill((255, 255, 255))
     self.font = pygame.font.Font(FONT_STYLE, 30)
@@ -20,9 +20,11 @@ class Menu:
     pygame.display.update()
     self.handle_events_on_menu(game)
     
-  
+
   def draw(self, screen):
     screen.blit(self.text, self.text_rect)
+
+
 
 
   def reset_screen_color(self, screen):
@@ -35,14 +37,15 @@ class Menu:
         game.playing = False
       elif event.type == pygame.KEYDOWN:
         game.run()
+
   def update_message(self, message,):
     self.text = self.font.render(message, True, (0,0,0))
     self.text_rect =self.text.get_rect()
-    self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT)
+    self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT+40)
   def scoreboard(self,  scoreboard):
     self.text = self.font.render(scoreboard, True, (0,0,0))
     self.text_rect= self.text.get_rect()
-    self.text_rect.center = (self.HALF_SCREEN_WIDTH , self.HALF_SCREEN_HEIGHT+100)
+    self.text_rect.center = (self.HALF_SCREEN_WIDTH +20, self.HALF_SCREEN_HEIGHT+100)
   def max(self, max_score):
     self.text = self.font.render(max_score, True, (0,0,0))
     self.text_rect =self.text.get_rect()
@@ -50,9 +53,4 @@ class Menu:
   def death(self, death):
     self.text = self.font.render(death, True, (0,0,0))
     self.text_rect =self.text.get_rect()
-    self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT+190)
-
-
-    
-  
-
+    self.text_rect.center = (self.HALF_SCREEN_WIDTH, self.HALF_SCREEN_HEIGHT+180)
