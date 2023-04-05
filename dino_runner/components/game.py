@@ -23,6 +23,9 @@ class Game:
         self.player = Dinosaur()
         self.death_count = 0
         self.score = 0
+        self.last_score = []
+        self.highest_score = 0
+
 
     def execute(self):
 
@@ -73,27 +76,40 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
-
+        
     def show_menu(self):
         half_screen_height = SCREEN_HEIGHT // 2
         half_screen_width = SCREEN_WIDTH // 2
         self.menu.reset_screen_color(self.screen)
-
+        self.highest_score = self.score
+        self.last_score.append(self.highest_score)
+        scores_max = max(self.last_score)
         if self.death_count  == 0:
             self.menu.draw(self.screen)
         else:
-            self.menu.update_message('new menu')
+            self.menu.update_message(f'Game over.. Press any Key to restart')
             self.menu.draw(self.screen)
+
+            self.menu.death(f"Total Deaths: {self.death_count}")
+            self.menu.draw(self.screen)
+
+            self.menu.max(f"Highest Score: {scores_max}")
+            self.menu.draw(self.screen)
+
+            self.menu.scoreboard(f"Your Score: {self.score}")
+            self.menu.draw(self.screen)
+
         self.screen.blit(ICON, (half_screen_width -50, half_screen_height -150 ))
         self.menu.update(self)
+
+
     def update_score(self):
         self.score +=1
         if self.score % 100 == 0 and self.game_speed < 500:
             self.game_speed += 5
-
     def draw_score(self):
         font = pygame.font.Font(FONT_STYLE, 30)
-        text = font.render(f'secore:{self.score}', True, (0,0,0))
+        text = font.render(f'score:{self.score}', True, (0,0,0))
         text_rect = text.get_rect()
         text_rect.center = (1000, 50)
         self.screen.blit(text, text_rect)
