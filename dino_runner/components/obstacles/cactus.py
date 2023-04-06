@@ -16,6 +16,6 @@ class Cactus(Obstacle):
     super().__init__(image, self.type)
     self.rect.y = cactus_pos
     
-  # Para lo hecho en clase: 'Third-Class'
-  # Para la tarea: 'Third-Class-Homework'
-  # Para cualquier extra: 'Third-Class-Extra'
+  # Para lo hecho en clase: 'Fourth-Class'
+  # Para la tarea: 'Fourth-Class-Homework'
+  # Para cualquier extra: 'Fourth-Class-Extra'
