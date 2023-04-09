@@ -34,6 +34,7 @@ class Game:
         while self.running:
             if not self.playing:
                 self.show_menu()
+
         pygame.display.quit()
         pygame.quit()
 
@@ -53,11 +54,15 @@ class Game:
 
     def update(self):
         user_input = pygame.key.get_pressed()
+
         self.player.update(user_input)
         self.obstacle_manager.update(self)
         self.power_up_manager.update(self)
         self.score.update()
         self.update_game_speed()
+        self.power_up_manager.hammer(self)
+        self.power_up_manager.space(self)
+
 
     def draw(self):
         self.clock.tick(FPS)
@@ -66,8 +71,10 @@ class Game:
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
         self.power_up_manager.draw(self.screen)
+
         self.score.draw(self.screen)
         self.draw_power_up_time()
+        self.power_up_manager.space(self)
         pygame.display.update()
         # pygame.display.flip()
 
@@ -110,8 +117,9 @@ class Game:
         self.obstacle_manager.reset_obstacles()
         self.score.reset()
         self.game_speed = self.GAME_SPEED
-        self.player.reset()
         self.power_up_manager.reset()
+        self.reset_draw()
+        self.player.reset()
 
     def draw_power_up_time(self):
         if self.player.has_power_up:
@@ -124,3 +132,7 @@ class Game:
             else:
                 self.player.has_power_up = False
                 self.player.type = DEFAULT_TYPE
+
+    def reset_draw(self):
+        self.player.has_power_up = False
+        self.player.type = DEFAULT_TYPE

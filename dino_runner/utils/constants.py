@@ -15,6 +15,13 @@ RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
+RUNNING_SPACE=[
+    pygame.image.load(os.path.join(IMG_DIR, "space/space1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "space/laserGreen2.png")),
+    
+
+
+]
 
 RUNNING_SHIELD = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
@@ -22,10 +29,16 @@ RUNNING_SHIELD = [
 ]
 
 RUNNING_HAMMER = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1Hammer.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Hammer.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2Hammer1.png")),
 ]
+JUMPING_SPACE = pygame.image.load(os.path.join(IMG_DIR, "space/space2.png"))
+DUCKING_SPACE =[
+    pygame.image.load(os.path.join(IMG_DIR, "space/duck.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "space/duck1.png")),
 
+
+]
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
 JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
@@ -66,9 +79,14 @@ SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
-
+SPACE = pygame.image.load(os.path.join(IMG_DIR, 'space/space1.png'))
 HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
+DINO_DEATH =pygame.image.load(os.path.join(IMG_DIR, 'Dino/DinoDead.png'))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = 'shield'
+HAMMER_TYPE = 'hammer'
+SPACE_TYPE = 'space'
+
+
 FONT_STYLE = 'freesansbold.ttf'
